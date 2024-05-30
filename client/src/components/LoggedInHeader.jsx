@@ -25,20 +25,20 @@ export default function Header() {
             </Link>
         </div>
         <ul className="flex gap-5">
-            <Link to={'/'} className="hover:underline">
-                <li>Home</li>
+            <Link to={'/dashboard'} className="hover:underline">
+                <li>Dashboard</li>
             </Link>
-            <Link className="hover:underline">
-                <li>Services</li>
+            <Link to={'/findproperty'} className="hover:underline">
+                <li>Find Property</li>
             </Link>
-            <Link className="hover:underline">
-                <li>About</li>
+            <Link to={'/myproperty'} className="hover:underline">
+                <li>My Property</li>
             </Link>
         </ul>
         <div>
                     <div ref={dropdownRef} className="relative inline-block">
                         <button onClick={toggleDropdown} className="w-7 h-7 rounded-full" type="button">
-                            <img src={session.session.profilePicture} alt="image" className="w-full object-fill"/>
+                            <img src={session.session.profilePicture} alt="image" className="w-full object-fill rounded-full"/>
                         </button>
                         {isOpen && (
                             <div className="dropdown-menu absolute left-0 mt-2 bg-white text-black shadow-lg w-auto">
@@ -48,7 +48,7 @@ export default function Header() {
                                         Profile
                                     </span>
                                 </Link>
-                                <Link to={'/login'} onClick={handleLogout}>
+                                <Link onClick={handleLogout}>
                                     <span href="#" className="block px-4 py-2 text-blue-950 hover:bg-gray-100">
                                         Logout
                                     </span>

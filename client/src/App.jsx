@@ -7,6 +7,11 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
 import LoggedInHeader from './components/LoggedInHeader.jsx';
+import PrivateRoute from './components/PrivateRoute.jsx';
+import Dashboard from './pages/Dashboard.jsx';
+import FindProperty from './pages/FindProperty.jsx';
+import MyProperty from './pages/MyProperty.jsx';
+import AddNewProperty from './pages/AddNewProperty.jsx';
 
 
 export default function App() {
@@ -22,6 +27,12 @@ export default function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<SignUp/>}/>
+        <Route element={<PrivateRoute/>}>
+          <Route path='/dashboard' element={<Dashboard/>}/>
+          <Route path='/findproperty' element={<FindProperty/>}/>
+          <Route path='/myproperty' element={<MyProperty/>}/>
+          <Route path='/addnewproperty' element={<AddNewProperty/>}/>
+        </Route>
       </Routes>
     </BrowserRouter>
   )

@@ -1,9 +1,11 @@
 import useToastMessage from "../utils/useToastMessage";
 import { useDispatch } from "react-redux";
 import { loadingStart,logoutSuccess,error } from "../redux/user/userSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function usePostAPI() {
 
+    const navigate=useNavigate();
     const dispatch=useDispatch();
     const [showSuccessMessage, showErrorMessage ] = useToastMessage();
 
@@ -18,8 +20,9 @@ export default function usePostAPI() {
             });
             const responseData = await response.json();
             if (response.ok) {
-                dispatch(logoutSuccess());
+                dispatch(logoutSuccess(responseData.message));
                 showSuccessMessage(responseData.message);
+                navigate('/login')
                 return
             } else {
                 dispatch(error(responseData.message))
